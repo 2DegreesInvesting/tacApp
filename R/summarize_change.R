@@ -12,11 +12,13 @@ summarize_change <- function(data) {
 }
 
 summarize1change <- function(data) {
-  real_categories <- c("add", "remove", "ramp up", "ramp down")
+  real_categories <- real_categories()
   real_change <- sum_categories(data, real_categories)
   virtual_categories <- c("buy", "sell")
   virtual_change <- sum_categories(data, virtual_categories)
+  # FIXME: What if the data lacks these categories? Then total change is 0
   total_change <- sum_categories(data, c(real_categories, virtual_categories))
+  # FIXME: What should we do when total_change is 0? Do we allow num/0?
   real_percent <- abs(100 * real_change / total_change)
   virtual_percent <- abs(100 * virtual_change / total_change)
 
@@ -73,4 +75,8 @@ add_unit <- function(x, unit) {
 
 round_percent_columns <- function(data) {
   mutate(data, across(matches("percent"), ~ as.integer(round(.x))))
+}
+
+real_categories <- function() {
+    c("add", "remove", "ramp up", "ramp down")
 }

@@ -59,3 +59,25 @@ test_that("helper rounds percents", {
   percents <- unlist(select(out, matches("percent")))
   expect_equal(percents, round(percents))
 })
+
+test_that("FIXME: `category` not in `real_category()` yields NaN `real_percent`", {
+  # Good
+  category <- real_categories()[[1]]
+  data <- tribble(
+    ~technology,  ~id, ~category,   ~type,  ~start,    ~end,  ~value,
+   "renewables",  Inf,  category, "total",       0,     0.1,     0.1,
+  )
+  out <- summarize_change(data)
+  expect_false(is.nan(out$real_percent))
+
+  # Bad
+  # Anything other than real_categories()
+  category <- "bad"
+  # Like `prep_raw(full(), full()[1, ])`
+  data <- tribble(
+    ~technology,  ~id, ~category,   ~type,  ~start,    ~end,  ~value,
+   "renewables",  Inf,  category, "total",       0,     0.1,     0.1,
+  )
+  out <- summarize_change(data)
+  expect_true(is.nan(out$real_percent))
+})
