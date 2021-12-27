@@ -18,15 +18,13 @@ prep_raw <- function(data, row = fake_row()) {
 
   technology <- as.character(row$technology)
   out <- filter(data, .data$technology == .env$technology)
-  out <-
-    filter(out, .data$target_company_id == row$target_company_id)
+  out <- filter(out, .data$target_company_id == row$target_company_id)
   if (nrow(out) == 0) {
     out <-
       filter(.data$subsidiary_company_id == row$subsidiary_company_id)
   }
 
-  out <-
-    lapply(technology, function(.x) {
+  out <- lapply(technology, function(.x) {
       prep1tech(out, technology = .x)
     })
 
