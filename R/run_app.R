@@ -63,9 +63,7 @@ server <- function(input, output, session) {
   })
 
   output$plot <- renderPlot({
-    ok <- has_useful_categories(data())
-    req(ok)
-
+    req(has_useful_categories(data()))
     plot_techs(data(), aspect.ratio = 1 / 1)
   },
   res = match_rstudio(),
