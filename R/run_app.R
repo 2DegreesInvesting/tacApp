@@ -51,18 +51,29 @@ server <- function(input, output, session) {
 
   output$summary <- renderTable({
     out <- summarize_change(data())
+
+    ok <- has_useful_categories(data())
+    if (!ok) {
+      validate("There is no data for the company and technology you selected.")
+    }
+    req(ok, cancelOutput = TRUE)
+
     out <- round_percent_columns(out)
     names(out) <- format_summary_names(names(out))
     out
   })
-  output$plot <- renderPlot(
-    plot_techs(data(), aspect.ratio = 1 / 1),
-    res = match_rstudio(),
-    height = function() {
-      # https://github.com/rstudio/shiny/issues/650#issuecomment-62443654
-      session$clientData$output_plot_width
-    }
-  )
+
+  output$plot <- renderPlot({
+    ok <- has_useful_categories(data())
+    req(ok, cancelOutput = FALSE)
+
+    plot_techs(data(), aspect.ratio = 1 / 1)
+  },
+  res = match_rstudio(),
+  height = function() {
+    # https://github.com/rstudio/shiny/issues/650#issuecomment-62443654
+    session$clientData$output_plot_width
+  })
 
   output$table <- renderDT(data())
   output$download <- download(data())
