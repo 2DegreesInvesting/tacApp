@@ -50,14 +50,13 @@ server <- function(input, output, session) {
   })
 
   output$summary <- renderTable({
-    out <- summarize_change(data())
-
     ok <- has_useful_categories(data())
     if (!ok) {
       validate("There is no data for the company and technology you selected.")
     }
-    req(ok, cancelOutput = TRUE)
+    req(ok)
 
+    out <- summarize_change(data())
     out <- round_percent_columns(out)
     names(out) <- format_summary_names(names(out))
     out
@@ -65,7 +64,7 @@ server <- function(input, output, session) {
 
   output$plot <- renderPlot({
     ok <- has_useful_categories(data())
-    req(ok, cancelOutput = FALSE)
+    req(ok)
 
     plot_techs(data(), aspect.ratio = 1 / 1)
   },
