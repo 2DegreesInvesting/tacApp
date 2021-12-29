@@ -3,19 +3,19 @@
     Code
       full()
     Output
-      # A tibble: 162,116 x 34
-         technology target_company_id subsidiary_company_id target_company_name       
-         <fct>                  <int>                 <int> <chr>                     
-       1 renewables            219235                219235 1 Slater Drive Llc        
-       2 gas                   219072                219072 1080 Chestnut Street Corp~
-       3 renewables            219108                219108 123 Investment Managers SA
-       4 renewables            219108                219108 123 Investment Managers SA
-       5 renewables            219108                219108 123 Investment Managers SA
-       6 renewables            219121                219121 1330 Campus Parkway Llc   
-       7 renewables            219129                219129 1382839 Ontario Inc       
-       8 renewables            219178                219178 174 Power Global Corp.    
-       9 renewables            219178                219178 174 Power Global Corp.    
-      10 renewables            219178                219178 174 Power Global Corp.    
+      # A tibble: 162,116 x 35
+         rowid technology target_company_id subsidiary_company_id target_company_name 
+         <int> <fct>                  <int>                 <int> <chr>               
+       1     1 renewables            219235                219235 1 Slater Drive Llc  
+       2     2 gas                   219072                219072 1080 Chestnut Stree~
+       3     3 renewables            219108                219108 123 Investment Mana~
+       4     4 renewables            219108                219108 123 Investment Mana~
+       5     5 renewables            219108                219108 123 Investment Mana~
+       6     6 renewables            219121                219121 1330 Campus Parkway~
+       7     7 renewables            219129                219129 1382839 Ontario Inc 
+       8     8 renewables            219178                219178 174 Power Global Co~
+       9     9 renewables            219178                219178 174 Power Global Co~
+      10    10 renewables            219178                219178 174 Power Global Co~
       # ... with 162,106 more rows, and 30 more variables:
       #   subsidiary_company_name <chr>, SBTI <dbl>, CA100 <dbl>, market_cap <dbl>,
       #   company_status <chr>, state_owned_entity_type <lgl>, shares_weight <dbl>,

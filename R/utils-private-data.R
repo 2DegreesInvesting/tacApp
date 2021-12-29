@@ -9,5 +9,6 @@ full <- function() {
       is.na(.data$subsidiary_company_name),
       as.character(.data$subsidiary_company_id),
       as.character(.data$subsidiary_company_name)
-    ))
+    )) %>%
+    tibble::rowid_to_column()
 }

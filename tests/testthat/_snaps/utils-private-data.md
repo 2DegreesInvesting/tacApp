@@ -10,28 +10,29 @@
     Code
       names(full())
     Output
-       [1] "technology"              "target_company_id"      
-       [3] "subsidiary_company_id"   "target_company_name"    
-       [5] "subsidiary_company_name" "SBTI"                   
-       [7] "CA100"                   "market_cap"             
-       [9] "company_status"          "state_owned_entity_type"
-      [11] "shares_weight"           "source_id"              
-      [13] "asset_name"              "start_year"             
-      [15] "dual"                    "status_x"               
-      [17] "asset_location"          "comp_cap_2018q4"        
-      [19] "comp_cap_2018_actual"    "comp_cap_2018_plan"     
-      [21] "status_y"                "comp_cap_2020q3"        
-      [23] "comp_cap_2020_actual"    "source_id_cnt"          
-      [25] "category"                "asset_cap_2018q4"       
-      [27] "asset_cap_2020q3"        "region"                 
-      [29] "sub-region"              "comp_size"              
-      [31] "comp_region"             "comp_sub_region"        
-      [33] "target_company"          "subsidiary_company"     
+       [1] "rowid"                   "technology"             
+       [3] "target_company_id"       "subsidiary_company_id"  
+       [5] "target_company_name"     "subsidiary_company_name"
+       [7] "SBTI"                    "CA100"                  
+       [9] "market_cap"              "company_status"         
+      [11] "state_owned_entity_type" "shares_weight"          
+      [13] "source_id"               "asset_name"             
+      [15] "start_year"              "dual"                   
+      [17] "status_x"                "asset_location"         
+      [19] "comp_cap_2018q4"         "comp_cap_2018_actual"   
+      [21] "comp_cap_2018_plan"      "status_y"               
+      [23] "comp_cap_2020q3"         "comp_cap_2020_actual"   
+      [25] "source_id_cnt"           "category"               
+      [27] "asset_cap_2018q4"        "asset_cap_2020q3"       
+      [29] "region"                  "sub-region"             
+      [31] "comp_size"               "comp_region"            
+      [33] "comp_sub_region"         "target_company"         
+      [35] "subsidiary_company"     
 
 ---
 
     Code
       dim(full())
     Output
-      [1] 162116     34
+      [1] 162116     35
 

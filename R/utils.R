@@ -35,6 +35,9 @@ fake_row <- function() {
 }
 
 has_useful_categories <- function(data) {
-  useful_categories <- c(real_categories(), virtual_categories())
-  any(unique(data$category) %in% useful_categories)
+  any(unique(data$category) %in% useful_categories())
+}
+
+useful_categories <- function() {
+  c(real_categories(), virtual_categories())
 }
