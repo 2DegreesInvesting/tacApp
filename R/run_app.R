@@ -40,13 +40,13 @@ server <- function(input, output, session) {
   known_id <- 1L
   default <- list(mode = "single", selected = known_id, target = "row")
   output$row_selector <- renderDT(
-    select_output_columns(full()),
+    select_output_columns(useful),
     selection = default,
     filter = "top"
   )
   data <- reactive({
-    row <- slice(full(), input$row_selector_rows_selected)
-    prep_raw(full(), row)
+    row <- slice(useful, input$row_selector_rows_selected)
+    prep_raw(useful, row)
   })
 
   output$summary <- renderTable({

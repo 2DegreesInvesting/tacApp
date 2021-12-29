@@ -7,7 +7,7 @@ library(vroom)
 library(fs)
 devtools::load_all()
 
-data <- full()[1:10, ]
+data <- full()[1:30, ]
 
 c("result", "summary", "plot") %>%
   extdata_path() %>%
