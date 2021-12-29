@@ -1,11 +1,13 @@
-data <- full()[1:10, ]
-
+library(readr)
+library(purrr)
 library(dplyr)
 library(here)
 library(glue)
 library(vroom)
 library(fs)
 devtools::load_all()
+
+data <- full()[1:10, ]
 
 c("result", "summary", "plot") %>%
   extdata_path() %>%
