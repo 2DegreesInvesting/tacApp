@@ -56,3 +56,8 @@ rowids <- function(output = "result") {
 extdata_path <- function(...) {
   here("inst", "extdata", ...)
 }
+
+extdata_path2 <- function(...) {
+  system.file("extdata", ..., package = "tacApp")
+}
+

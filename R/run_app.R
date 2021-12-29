@@ -44,9 +44,12 @@ server <- function(input, output, session) {
     selection = default,
     filter = "top"
   )
+
+  rowid <- reactive(useful[input$row_selector_rows_selected, "rowid"][[1]])
+
   data <- reactive({
-    row <- slice(useful, input$row_selector_rows_selected)
-    prep_raw(useful, row)
+    path <- extdata_path2("result", glue("{rowid()}.csv"), mustWork = TRUE)
+    vroom::vroom(path, show_col_types = FALSE)
   })
 
   output$summary <- renderTable({
@@ -58,7 +61,8 @@ server <- function(input, output, session) {
     }
     req(has_useful_categories(data()))
 
-    out <- summarize_change(data())
+    path <- extdata_path2("summary", glue("{rowid()}.csv"), mustWork = TRUE)
+    out <- vroom::vroom(path, show_col_types = FALSE)
     out <- round_percent_columns(out)
     names(out) <- format_summary_names(names(out))
     out
@@ -67,7 +71,9 @@ server <- function(input, output, session) {
   output$plot <- renderPlot(
     {
       req(has_useful_categories(data()))
-      plot_techs(data(), aspect.ratio = 1 / 1)
+      path <- extdata_path2("plot", glue("{rowid()}.rds"), mustWork = TRUE)
+      plot <- readr::read_rds(path)
+      plot
     },
     res = match_rstudio(),
     height = function() {

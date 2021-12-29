@@ -22,7 +22,7 @@ for (i in data$rowid) {
     vroom_write(summary, extdata_path("summary", glue("{i}.csv")))
 
     plot <- plot_techs(result, aspect.ratio = 1 / 1)
-    write_rds(plot, extdata_path("plot", glue("{i}.ids")))
+    write_rds(plot, extdata_path("plot", glue("{i}.rds")))
   }
 }
 

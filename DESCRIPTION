@@ -16,6 +16,7 @@ License: MIT + file LICENSE
 Imports: 
     dplyr,
     DT,
+    fs,
     ggplot2,
     glue,
     here,
@@ -27,7 +28,8 @@ Imports:
     shiny,
     tacAppPrivateData (>= 0.0.0.9000),
     tibble,
-    tidyr
+    tidyr,
+    vroom
 Suggests: 
     roxygen2,
     testthat (>= 3.0.0),
