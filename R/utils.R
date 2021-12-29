@@ -41,3 +41,18 @@ has_useful_categories <- function(data) {
 useful_categories <- function() {
   c(real_categories(), virtual_categories())
 }
+
+rowids <- function(output = "result") {
+  output %>%
+    extdata_path() %>%
+    dir_ls() %>%
+    path_file() %>%
+    path_ext_remove() %>%
+    as.integer() %>%
+    sort()
+
+}
+
+extdata_path <- function(...) {
+  here("inst", "extdata", ...)
+}
