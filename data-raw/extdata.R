@@ -23,3 +23,6 @@ for (i in data$rowid) {
     write_rds(plot, extdata_path("plot", glue("{i}.ids")))
   }
 }
+
+rowids <- rowids()
+use_data(rowids, overwrite = TRUE, internal = TRUE)
