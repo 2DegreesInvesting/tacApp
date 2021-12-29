@@ -48,7 +48,7 @@ server <- function(input, output, session) {
   rowid <- reactive(useful[input$row_selector_rows_selected, "rowid"][[1]])
 
   data <- reactive({
-    path <- extdata_path2("result", glue("{rowid()}.csv"), mustWork = TRUE)
+    path <- installed_source_extdata_path("result", glue("{rowid()}.csv"), mustWork = TRUE)
     vroom::vroom(path, show_col_types = FALSE)
   })
 
@@ -61,7 +61,7 @@ server <- function(input, output, session) {
     }
     req(has_useful_categories(data()))
 
-    path <- extdata_path2("summary", glue("{rowid()}.csv"), mustWork = TRUE)
+    path <- installed_source_extdata_path("summary", glue("{rowid()}.csv"), mustWork = TRUE)
     out <- vroom::vroom(path, show_col_types = FALSE)
     out <- round_percent_columns(out)
     names(out) <- format_summary_names(names(out))
@@ -71,7 +71,7 @@ server <- function(input, output, session) {
   output$plot <- renderPlot(
     {
       req(has_useful_categories(data()))
-      path <- extdata_path2("plot", glue("{rowid()}.rds"), mustWork = TRUE)
+      path <- installed_source_extdata_path("plot", glue("{rowid()}.rds"), mustWork = TRUE)
       plot <- readr::read_rds(path)
       plot
     },

@@ -1,4 +1,4 @@
-extdata_path <- function(..., package = "tacAppPrivateData") {
+source_extdata_path <- function(..., package = "tacAppPrivateData") {
   system.file("extdata", ..., package = package)
 }
 
@@ -44,20 +44,19 @@ useful_categories <- function() {
 
 rowids <- function(output = "result") {
   output %>%
-    extdata_path() %>%
+    source_extdata_path() %>%
     dir_ls() %>%
     path_file() %>%
     path_ext_remove() %>%
     as.integer() %>%
     sort()
-
 }
 
-extdata_path <- function(...) {
+source_extdata_path <- function(...) {
   here("inst", "extdata", ...)
 }
 
-extdata_path2 <- function(...) {
+installed_source_extdata_path <- function(...) {
   system.file("extdata", ..., package = "tacApp")
 }
 
