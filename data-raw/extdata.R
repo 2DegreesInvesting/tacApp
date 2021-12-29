@@ -25,4 +25,9 @@ for (i in data$rowid) {
 }
 
 rowids <- rowids()
-use_data(rowids, overwrite = TRUE, internal = TRUE)
+useful <- filter(full(), rowid %in% rowids)
+use_data(
+  rowids,
+  useful,
+  overwrite = TRUE
+)

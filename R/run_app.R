@@ -37,7 +37,7 @@ run_app <- function() {
 }
 
 server <- function(input, output, session) {
-  known_id <- 8L
+  known_id <- 1L
   default <- list(mode = "single", selected = known_id, target = "row")
   output$row_selector <- renderDT(
     select_output_columns(full()),
