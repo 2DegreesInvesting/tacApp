@@ -7,15 +7,17 @@ library(vroom)
 library(fs)
 devtools::load_all()
 
-data <- valid[1:30, ]
+dir_create(data_raw_path("result"))
 
-c("result") %>%
-  data_raw_path() %>%
-  map(dir_create)
+n <- nrow(valid)
+data <- slice_head(valid, n = n)
 
-for (i in data$rowid) {
+answer <- menu(c("Continue", "Cancel"), title = glue("Iterate over {n} items?"))
+if (answer == 2) stop("Do you need to adjust `n` and retry?", call. = FALSE)
+
+for (i in seq_along(data$rowid)) {
   result <- prep_raw(data, slice(data, i))
   if (any(result$category %in% useful_categories())) {
-    vroom_write(result, data_raw_path("result", glue("{i}.csv")))
+    vroom_write(result, data_raw_path("result", glue("{data$rowid[i]}.csv")))
   }
 }
