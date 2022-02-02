@@ -7,7 +7,6 @@ devtools::load_all()
 dir_create(data_raw_path("result"))
 
 n <- nrow(valid)
-n <- 3
 data <- slice_head(valid, n = n)
 
 answer <- menu(c("Continue", "Cancel"), title = glue("Iterate over {n} items?"))
