@@ -1,5 +1,6 @@
 .Rproj.user
 .Rhistory
 rsconnect
-data
+data/
+!data/valid_rowids.rda
 data-raw/result
