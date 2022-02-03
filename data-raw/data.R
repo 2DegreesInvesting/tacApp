@@ -1,21 +1,13 @@
 # WARNING: Git ignores data/. You may recover it from the published app's bundle
 
-if (exists("valid_rowids", "package:tacApp")) {
-  valid_rowids <- tacApp::valid_rowids
-} else {
-  rlang::warn(c(
-    "Discovering which rowids produce valid results, slooowly.",
-    i = "Do you need to recover data/ from the bundle of the published app?"
+if (!exists("valid_rowids", "package:tacApp")) {
+  rlang::abort(c(
+    "`valid_rowids` must exist.",
+    i = "Do you need to run `source('data-raw/valid_rowids.R')` (slow)?",
   ))
-  source(here::here("data-raw", "result.R"))
-  valid_rowids <- "result" %>%
-    data_raw_path() %>%
-    dir_ls() %>%
-    path_file() %>%
-    path_ext_remove() %>%
-    as.integer() %>%
-    sort()
 }
+
+valid_rowids <- tacApp::valid_rowids
 
 valid <- full() %>%
   filter(rowid %in% valid_rowids)
