@@ -3,7 +3,7 @@
 if (!exists("valid_rowids", "package:tacApp")) {
   rlang::abort(c(
     "`valid_rowids` must exist.",
-    i = "Do you need to run `source('data-raw/valid_rowids.R')` (slow)?",
+    i = "Do you need to run `source(here::here('data-raw/valid_rowids.R'))`?"
   ))
 }
 
